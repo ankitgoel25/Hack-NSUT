@@ -3,7 +3,9 @@ import { FaGoogle } from 'react-icons/fa';
 import styled from 'styled-components';
 import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/router';
-import Loader from '../components/Loader';
+import dynamic from 'next/dynamic';
+
+const Videocall = dynamic(() => import('./agora/index.js'), { ssr: false });
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -102,7 +104,6 @@ const LoginPage = () => {
     if (user && !loading) router.replace('/home');
   }, [user, loading]);
 
-  // if (loading) return <Loader />;
   if (!user)
     return (
       <Wrapper>
@@ -131,6 +132,7 @@ const LoginPage = () => {
             />
           </div>
         </LoginWrapper>
+        <Videocall />
       </Wrapper>
     );
   else return <></>;
