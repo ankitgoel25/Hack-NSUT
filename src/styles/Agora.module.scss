@@ -5,19 +5,23 @@
   flex: 1;
   background-color: #007bff22;
 }
+
 .heading {
   text-align: center;
   margin-bottom: 0px;
 }
+
 .videoContainer {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
+
 .nav {
   display: flex;
   justify-content: space-around;
 }
+
 .btn {
   background-color: #007bff;
   cursor: pointer;
@@ -26,6 +30,7 @@
   color: #ffffff;
   font-size: 20px;
 }
+
 .input {
   display: flex;
   height: 24px;
