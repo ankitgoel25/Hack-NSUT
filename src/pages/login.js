@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import Button from '@mui/material/Button';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import styled from 'styled-components';
-// import { UserContext } from '../../context/userContext';
+import { UserContext } from '../context/userContext';
+import { auth, createUserProfileDocument } from '../firebase';
 
 
 const Wrapper = styled.div`
@@ -23,7 +24,7 @@ const LoginWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #35858B;
+  background-color: #e7ffff;
   padding: 40px;
 
   .leftContainer {
@@ -61,8 +62,7 @@ const StyledLoginButton = styled(Button)`
   height: 70px;
   border-radius: 40px;
   font-family: 'Sora', sans-serif;
-  background: #efcb68;
-  color: #160c28;
+  color: #35858B !important;
   font-size: 25px;
   font-weight: 600;
   display: flex;
@@ -75,13 +75,13 @@ const StyledLoginButton = styled(Button)`
   &:hover,
   &:focus,
   &:active {
-    color: #160c28;
+    color: #160c28 !important;
     background: #efcb68;
     border-color: unset;
   }
 
   &:hover {
-    border: 3px solid #160c28;
+    border: 3px solid #160c28 !important;
   }
 `;
 
@@ -95,8 +95,34 @@ const SubHeading = styled.span`
 `;
 
 const LoginPage = () => {
-//   const userContext = useContext(UserContext);
-//   const { signInWithGoogle, signInWithGithub } = userContext;
+
+  const userContext = useContext(UserContext);
+  const { user, setUser, loading, setLoading } = userContext;
+
+
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged(async (user) => {
+    setLoading(true);
+    if (user) {
+      const userRef = await createUserProfileDocument(user);
+
+      onSnapshot(userRef, (snapShot) => {
+        setUser({
+          id: snapShot.id,
+          ...snapShot.data(),
+        });
+        setLoading(false);
+      });
+    } else {
+      setLoading(false);
+      setUser(false);
+    }
+  });
+
+  return unsubscribe;
+  // eslint-disable-next-line
+}, []);
+
   return (
     <Wrapper>
       <LoginWrapper>
