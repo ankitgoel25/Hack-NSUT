@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useContext, useEffect } from 'react';
 import { SnackbarProvider } from 'notistack';
 import { UserProvider } from '../context/UserContext';
 import { ThemeProvider } from '@mui/material/styles';

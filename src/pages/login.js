@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import styled from 'styled-components';
+import { UserContext } from '../context/UserContext';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -90,8 +92,7 @@ const SubHeading = styled.span`
 `;
 
 const LoginPage = () => {
-  //   const userContext = useContext(UserContext);
-  //   const { signInWithGoogle, signInWithGithub } = userContext;
+  const { signInWithGoogle } = useContext(UserContext);
 
   return (
     <Wrapper>
