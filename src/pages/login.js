@@ -5,7 +5,7 @@ import { UserContext } from '../context/UserContext';
 import dynamic from 'next/dynamic';
 
 
-const Videocall = dynamic(() => import('./agora/index.js'), { ssr: false });
+const Videocall = dynamic((evt) => import('./agora/index.js'), { ssr: false });
 
 
 const Wrapper = styled.div`
@@ -102,7 +102,7 @@ const LoginPage = () => {
 
   return (
     <Wrapper>
-      <LoginWrapper>
+      {/* <LoginWrapper>
         <div className="leftContainer">
           <img className="logo" alt="logo" src="/images/Logo.png" />
           <SubHeading>
@@ -126,7 +126,7 @@ const LoginPage = () => {
             src="/images/HomeIllus.svg"
           />
         </div>
-      </LoginWrapper>
+      </LoginWrapper> */}
 
       <Videocall />
     </Wrapper>
