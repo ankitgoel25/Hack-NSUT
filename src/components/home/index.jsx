@@ -1,9 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { AiOutlineLogout } from 'react-icons/ai';
-import { FaHome } from 'react-icons/fa';
 import { BsFillShareFill } from 'react-icons/bs';
-import { IoMdChatbubbles } from 'react-icons/io';
 import { StyledSubmitButton } from './components';
 import { useSnackbar } from 'notistack';
 import { Collapse, Button, Avatar } from '@mui/material';
@@ -22,25 +20,25 @@ const Wrapper = styled.div`
 `;
 
 const StyledSignoutButton = styled(Button)`
-  height: 50px;
-  border-radius: 40px;
+  height: 48px;
+  border-radius: 20px;
   font-family: 'Sora', sans-serif;
   background: #4fbdba;
   color: #072227;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
   border: 2px solid transparent;
   text-transform: none;
+  padding: 6px 12px;
 
   &:hover,
   &:focus,
   &:active {
     color: #072227;
-    background: #efcb68;
+    background: #4fbdba;
     border-color: unset;
   }
 
@@ -50,16 +48,15 @@ const StyledSignoutButton = styled(Button)`
 `;
 
 const TopNavBar = styled.div`
-  position: absolute;
-  top: 0px;
   width: 100%;
   height: 80px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  border-bottom: 3px solid #000411;
+  ${'' /* border-bottom: 3px solid #07222722; */}
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: auto;
   padding: 0 20px 0 20px;
 `;
 
@@ -74,41 +71,22 @@ const HomeWrapper = styled.div`
   position: relative;
 `;
 
-const CurrentRoute = styled.div`
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Sora', sans-serif;
-  color: #072227;
-  font-size: 25px;
-  font-weight: 600;
-  margin-right: 50px;
-  cursor: pointer;
-
-  ${(props) =>
-    props.current ? ` border-bottom : 4px solid #072227; ` : ''}/* ${(props) =>
-    props.disabled
-      ? `
-  pointer-events: none;
-  cursor: not-allowed;
-  filter: opacity(0.5);
-  `
-      : ''} */
-`;
-
 const BottomContainer = styled.div`
   width: 100%;
-  height: calc(100% - 80px);
-  margin-top: 80px;
+  height: 100%;
+  ${'' /* margin-top: 80px; */}
   display: flex;
 
   .leftContainer {
     width: 24%;
     height: 100%;
-    border-right: 3px solid #072227;
-    padding: 20px 0;
+    border-right: 1px solid #07222722;
+    padding: 30px 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .logo {
       width: 82%;
@@ -121,6 +99,7 @@ const BottomContainer = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-grow: 1;
 
       .title {
         font-family: 'Sora', sans-serif;
@@ -135,18 +114,25 @@ const BottomContainer = styled.div`
         color: #072227;
         font-size: 17px;
         font-weight: 600;
-        margin-bottom: 10px;
+        margin: 8px;
       }
     }
   }
   .rightContainer {
     width: 76%;
     height: 100%;
-    padding: 30px;
-    display: grid;
-    grid-template-columns: 48.5% 48.5%;
-    grid-template-rows: 100%;
-    column-gap: 3%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+
+    .homeView {
+      padding: 30px;
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 48.5% 48.5%;
+      grid-template-rows: 100%;
+      column-gap: 3%;
+    }
 
     .left {
       display: flex;
@@ -158,11 +144,13 @@ const BottomContainer = styled.div`
         height: 47%;
         width: 100%;
         border-radius: 20px;
-        background-color: #aeb7b3;
-        padding: 20px 30px;
+        ${'' /* background-color: #e4e4e440; */}
+        ${'' /* border: 2px solid #160c2811; */}
+       box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        padding: 30px 30px 20px;
         display: flex;
         flex-direction: column;
-        justify-content: top;
+        justify-content: flex-start;
         align-items: center;
 
         .content {
@@ -177,7 +165,8 @@ const BottomContainer = styled.div`
 
     .right {
       border-radius: 20px;
-      background-color: #aeb7b3;
+      ${'' /* background-color: #e4e4e440; */}
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       display: flex;
       padding: 20px 30px;
       flex-direction: column;
@@ -195,7 +184,7 @@ const BottomContainer = styled.div`
 
       /* Track */
       &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px #aeb7b3;
+        box-shadow: inset 0 0 5px #e4e4e440;
       }
 
       /* Handle */
@@ -221,38 +210,24 @@ const Home = () => {
     return (
       <Wrapper>
         <HomeWrapper>
-          <TopNavBar>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <StyledSignoutButton
-                type="default"
-                size="large"
-                onClick={async () => {
-                  await signOutUser();
-                }}
-              >
-                <AiOutlineLogout size={30} />
-                &nbsp;&nbsp;SignOut
-              </StyledSignoutButton>
-              <Avatar
-                size={55}
-                sx={{ width: 55, height: 55 }}
-                src={
-                  user.userImage
-                    ? user.userImage
-                    : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
-                }
-              />
-            </div>
-          </TopNavBar>
           <BottomContainer>
             <div className="leftContainer">
               <img className="logo" alt="logo" src="/images/Logo.png" />
               <div className="userDetails">
                 <span className="title">User Details</span>
+                <Avatar
+                  size={52}
+                  sx={{ width: 52, height: 52, mb: 1 }}
+                  src={
+                    user.userImage
+                      ? user.userImage
+                      : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+                  }
+                />
                 <p>{user.displayName}</p>
                 <p>{user.email}</p>
                 <StyledSubmitButton
-                  style={{ marginTop: '10px', width: '70%' }}
+                  style={{ marginTop: '16px', width: '70%' }}
                   onClick={() => {
                     navigator.clipboard.writeText(user.id).then(() => {
                       enqueueSnackbar('User ID copied', {
@@ -266,13 +241,29 @@ const Home = () => {
                     });
                   }}
                 >
-                  Share ID&nbsp;&nbsp;
+                  <span style={{ marginRight: 8 }}>Share ID&nbsp;&nbsp;</span>
                   <BsFillShareFill size={20} />
                 </StyledSubmitButton>
+                <TopNavBar>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <StyledSignoutButton
+                      type="default"
+                      size="large"
+                      onClick={async () => {
+                        await signOutUser();
+                      }}
+                    >
+                      <span style={{ marginRight: 8 }}>&nbsp;&nbsp;Logout</span>
+                      <AiOutlineLogout size={25} />
+                    </StyledSignoutButton>
+                  </div>
+                </TopNavBar>
               </div>
             </div>
             <div className="rightContainer">
-              <HomeView />
+              <div className="homeView">
+                <HomeView />
+              </div>
             </div>
           </BottomContainer>
         </HomeWrapper>

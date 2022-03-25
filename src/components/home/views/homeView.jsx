@@ -6,7 +6,7 @@ import { MdGroups } from 'react-icons/md';
 import { useSnackbar } from 'notistack';
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../../../context/UserContext';
-
+import { useRouter } from 'next/router';
 import {
   Heading,
   SubHeading,
@@ -14,7 +14,6 @@ import {
   StyledSubmitButton,
   RecentMeetings,
 } from '../components';
-
 import { db } from '../../../firebase';
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
 
@@ -29,7 +28,7 @@ const HomeView = () => {
     create: false,
     join: false,
   });
-  const history = useHistory();
+  const history = useRouter();
 
   const joinMeeting = async (meetingId) => {
     // check if meeting exists and join the meeting

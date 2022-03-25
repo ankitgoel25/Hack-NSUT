@@ -7,11 +7,12 @@ export const Heading = styled.span`
   color: #000411;
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
 `;
 
 export const SubHeading = styled.p`
   font-family: 'Sora', sans-serif;
-  color: #4FBDBA;
+  color: #35858b;
   font-size: 18px;
   font-weight: 600;
   width: 99%;
@@ -24,30 +25,32 @@ export const StyledInput = styled.input`
   width: 100%;
   font-size: 17px;
   outline: none;
-  border-color: #160c28;
+  border-color: red;
   border-radius: 10px;
-  background: #e1efe6;
+  background: #aefeff35;
   font-family: 'Sora', sans-serif;
   margin-bottom: 15px;
   border: 2px solid transparent;
+  padding: 8px 10px;
+  border: 2px solid #160c2811;
 
   &:hover,
   &:focus,
   &:active {
     color: #160c28;
-    background: #e1efe6;
+    background: #aefeff35;
     border: 2px solid #160c28;
     box-shadow: none;
   }
 `;
 
 export const StyledSubmitButton = styled.button`
-  height: 40px;
+  height: 48px;
   border-radius: 20px;
   font-family: 'Sora', sans-serif;
-  background: #efcb68;
+  background: #4fbdba;
   color: #160c28;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -55,12 +58,13 @@ export const StyledSubmitButton = styled.button`
   line-height: unset;
   border: 2px solid transparent;
   text-transform: none;
+  padding: 6px 12px;
 
   &:hover,
   &:focus,
   &:active {
     color: #160c28;
-    background: #efcb68;
+    background: #4fbdba;
     border-color: unset;
   }
 
@@ -80,11 +84,11 @@ export const RecentMeetings = styled.div`
   color: #160c28;
   font-size: 20px;
   font-weight: 400;
-  background: #e1efe6;
+  background: #aefeff35;
   cursor: pointer;
   padding: 5px 20px;
 
   &:hover {
-    background: #efcb68;
+    background: #4fbdba;
   }
 `;

@@ -70,8 +70,9 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider value={contextProps}>
-      {loading && <Loader />}
-      {!loading && children}
+      {/* {loading && <Loader />}
+      {!loading && children} */}
+      {children}
     </UserContext.Provider>
   );
 };
