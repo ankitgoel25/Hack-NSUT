@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
 import { SnackbarProvider } from 'notistack';
 import { UserProvider } from '../context/UserContext';
+import { ThemeProvider } from '@mui/material/styles';
+import { myTheme } from '../utils/theme';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -10,11 +11,13 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Team Unknown</title>
       </Head>
-      <SnackbarProvider maxSnack={3}>
-        <UserProvider>
-          <Component {...pageProps} />
-        </UserProvider>
-      </SnackbarProvider>
+      <ThemeProvider theme={myTheme}>
+        <SnackbarProvider maxSnack={3}>
+          <UserProvider>
+            <Component {...pageProps} />
+          </UserProvider>
+        </SnackbarProvider>
+      </ThemeProvider>
     </>
   );
 }
