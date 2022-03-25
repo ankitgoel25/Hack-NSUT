@@ -1,0 +1,34 @@
+{
+  "name": "video-call-app-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "pretest": "eslint *.js src/*.js --fix"
+  },
+  "author": "apoorv",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^10.0.1",
+    "socket.io": "^4.2.0",
+    "twilio": "^3.71.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.8.0",
+    "@typescript-eslint/parser": "^4.8.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.0",
+    "typescript": "^4.0.5"
+  }
+}

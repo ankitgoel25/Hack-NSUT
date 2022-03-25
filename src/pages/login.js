@@ -91,6 +91,7 @@ const SubHeading = styled.span`
   font-family: 'Sora', sans-serif;
   width: 60%;
   font-size: 30px;
+  text-align: center;
   font-weight: 600;
   margin: 30px auto;
   color: #160c28;

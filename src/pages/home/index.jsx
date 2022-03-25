@@ -1,9 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import { AiOutlineLogout } from "react-icons/ai";
-import { FaHome } from "react-icons/fa";
 import { BsFillShareFill } from "react-icons/bs";
-import { IoMdChatbubbles } from "react-icons/io";
 import { StyledSubmitButton } from "./components";
 import { useSnackbar } from "notistack";
 import { Collapse, Button, Avatar } from "@mui/material";
@@ -72,29 +70,6 @@ const HomeWrapper = styled.div`
   align-items: center;
   background-color: white;
   position: relative;
-`;
-
-const CurrentRoute = styled.div`
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Sora", sans-serif;
-  color: #072227;
-  font-size: 25px;
-  font-weight: 600;
-  margin-right: 50px;
-  cursor: pointer;
-
-  ${(props) =>
-    props.current ? ` border-bottom : 4px solid #072227; ` : ""}/* ${(props) =>
-    props.disabled
-      ? `
-  pointer-events: none;
-  cursor: not-allowed;
-  filter: opacity(0.5);
-  `
-      : ""} */
 `;
 
 const BottomContainer = styled.div`
