@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { FaHome } from 'react-icons/fa';
 import { BsFillShareFill } from 'react-icons/bs';
 import { IoMdChatbubbles } from 'react-icons/io';
-
 import Logo from '../../assets/logoDarkTransparentHorizhontal.png';
 import { StyledSubmitButton } from './components';
-
 import { useSnackbar } from 'notistack';
 import { Collapse, Button, Avatar } from '@mui/material';
 
@@ -88,13 +86,7 @@ const CurrentRoute = styled.div`
   cursor: pointer;
 
   ${(props) =>
-    props.current
-      ? `
-  border-bottom : 4px solid #160c28;
-  `
-      : ''}
-
-  /* ${(props) =>
+    props.current ? ` border-bottom : 4px solid #160c28; ` : ''}/* ${(props) =>
     props.disabled
       ? `
   pointer-events: none;

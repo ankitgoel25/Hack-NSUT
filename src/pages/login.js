@@ -35,6 +35,7 @@ const LoginWrapper = styled.div`
 
     .logo {
       height: 120px;
+      margin-bottom: 20px;
     }
   }
 
@@ -98,7 +99,7 @@ const LoginPage = () => {
     <Wrapper>
       <LoginWrapper>
         <div className="leftContainer">
-          <img className="logo" alt="logo" src="/images/HomeIllus.svg" />
+          <img className="logo" alt="logo" src="/images/Logo.png" />
           <SubHeading>
             Meet, chat, call and collaborate in just one place.
           </SubHeading>
