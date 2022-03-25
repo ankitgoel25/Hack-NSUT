@@ -1,4 +1,7 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { SnackbarProvider } from 'notistack';
+import { UserProvider } from '../context/UserContext';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -7,7 +10,11 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Team Unknown</title>
       </Head>
-      <Component {...pageProps} />
+      <SnackbarProvider maxSnack={3}>
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
+      </SnackbarProvider>
     </>
   );
 }
