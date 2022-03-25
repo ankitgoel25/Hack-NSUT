@@ -8,6 +8,7 @@ import { StyledSubmitButton } from './components';
 import { useSnackbar } from 'notistack';
 import { Collapse, Button, Avatar } from '@mui/material';
 import { UserContext } from '../../context/UserContext';
+import HomeView from './views/homeView';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -221,27 +222,6 @@ const Home = () => {
       <Wrapper>
         <HomeWrapper>
           <TopNavBar>
-            <div style={{ display: 'flex' }}>
-              <CurrentRoute
-                current={view === 'home'}
-                onClick={() => {
-                  setView('home');
-                }}
-              >
-                <FaHome size={30} />
-                &nbsp;Home
-              </CurrentRoute>
-              <CurrentRoute
-                disabled
-                current={view === 'messages'}
-                onClick={() => {
-                  setView('messages');
-                }}
-              >
-                <IoMdChatbubbles size={30} />
-                &nbsp;Messages
-              </CurrentRoute>
-            </div>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <StyledSignoutButton
                 type="default"
@@ -291,9 +271,9 @@ const Home = () => {
                 </StyledSubmitButton>
               </div>
             </div>
-            {/* <div className="rightContainer">
-            {view === 'home' ? <HomeView /> : <MessageView />}
-          </div> */}
+            <div className="rightContainer">
+              <HomeView />
+            </div>
           </BottomContainer>
         </HomeWrapper>
       </Wrapper>

@@ -102,6 +102,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user && !loading) router.replace('/home');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
 
   if (!user)
