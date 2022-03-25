@@ -1,7 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import styled from 'styled-components';
 import { UserContext } from '../context/UserContext';
+import { useRouter } from 'next/router';
+import Loader from '../components/Loader';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -93,37 +95,45 @@ const SubHeading = styled.span`
 `;
 
 const LoginPage = () => {
-  const { signInWithGoogle } = useContext(UserContext);
+  const router = useRouter();
+  const { user, loading, signInWithGoogle } = useContext(UserContext);
 
-  return (
-    <Wrapper>
-      <LoginWrapper>
-        <div className="leftContainer">
-          <img className="logo" alt="logo" src="/images/Logo.png" />
-          <SubHeading>
-            Meet, chat, call and collaborate in just one place.
-          </SubHeading>
-          <StyledLoginButton
-            type="default"
-            size="large"
-            onClick={async () => {
-              await signInWithGoogle();
-            }}
-          >
-            <FaGoogle size={30} />
-            &nbsp;&nbsp;Login with Google
-          </StyledLoginButton>
-        </div>
-        <div className="rightContainer">
-          <img
-            className="videoIllus"
-            alt="video call illustration"
-            src="/images/HomeIllus.svg"
-          />
-        </div>
-      </LoginWrapper>
-    </Wrapper>
-  );
+  useEffect(() => {
+    if (user && !loading) router.replace('/home');
+  }, [user, loading]);
+
+  // if (loading) return <Loader />;
+  if (!user)
+    return (
+      <Wrapper>
+        <LoginWrapper>
+          <div className="leftContainer">
+            <img className="logo" alt="logo" src="/images/Logo.png" />
+            <SubHeading>
+              Meet, chat, call and collaborate in just one place.
+            </SubHeading>
+            <StyledLoginButton
+              type="default"
+              size="large"
+              onClick={async () => {
+                await signInWithGoogle();
+              }}
+            >
+              <FaGoogle size={30} />
+              &nbsp;&nbsp;Login with Google
+            </StyledLoginButton>
+          </div>
+          <div className="rightContainer">
+            <img
+              className="videoIllus"
+              alt="video call illustration"
+              src="/images/HomeIllus.svg"
+            />
+          </div>
+        </LoginWrapper>
+      </Wrapper>
+    );
+  else return <></>;
 };
 
 export default LoginPage;

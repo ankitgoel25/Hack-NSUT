@@ -3,6 +3,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { auth, createUserProfileDocument } from '../firebase';
 import { onSnapshot } from 'firebase/firestore';
 import { useRouter } from 'next/router';
+import Loader from '../components/Loader';
 
 const UserContext = createContext();
 
@@ -68,7 +69,10 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={contextProps}>{children}</UserContext.Provider>
+    <UserContext.Provider value={contextProps}>
+      {loading && <Loader />}
+      {!loading && children}
+    </UserContext.Provider>
   );
 };
 

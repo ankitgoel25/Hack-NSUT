@@ -15,17 +15,19 @@ const Paragraph = styled.p`
 `;
 
 export default function Home() {
-  const { signOutUser } = useContext(UserContext);
+  const { user, signOutUser } = useContext(UserContext);
 
-  return (
-    <div className={styles.container}>
-      <Paragraph hoverColor="black">
-        I am a component made with Styled Components
-      </Paragraph>
-      <Typography variant="h1" color="medBlue" component="h2">
-        h1. Heading
-      </Typography>
-      <Button onClick={() => signOutUser()}>Logout</Button>
-    </div>
-  );
+  if (user)
+    return (
+      <div className={styles.container}>
+        <Paragraph hoverColor="black">
+          I am a component made with Styled Components
+        </Paragraph>
+        <Typography variant="h1" color="medBlue" component="h2">
+          h1. Heading
+        </Typography>
+        <Button onClick={() => signOutUser()}>Logout</Button>
+      </div>
+    );
+  else return <></>;
 }
