@@ -1,8 +1,11 @@
 import { createTheme } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
 
 export const myTheme = createTheme({
   palette: {
-    red: purple[500],
+    lightBlue: '#AEFEFF',
+    // #7cdfe1, aefeff66
+    medBlue: '#4FBDBA',
+    darkBlue: '#35858B',
+    blackBlue: '#072227',
   },
 });

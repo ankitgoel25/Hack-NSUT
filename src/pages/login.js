@@ -1,9 +1,5 @@
-import React, { useState, useContext } from 'react';
-import Button from '@mui/material/Button';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import styled from 'styled-components';
-// import { UserContext } from '../../context/userContext';
-
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -13,7 +9,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #072227;
+  background-color: #35858b;
 `;
 
 const LoginWrapper = styled.div`
@@ -23,7 +19,7 @@ const LoginWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #35858B;
+  background-color: #fff;
   padding: 40px;
 
   .leftContainer {
@@ -56,32 +52,31 @@ const LoginWrapper = styled.div`
   }
 `;
 
-const StyledLoginButton = styled(Button)`
+const StyledLoginButton = styled.button`
   width: 60%;
   height: 70px;
   border-radius: 40px;
   font-family: 'Sora', sans-serif;
-  background: #efcb68;
+  background: none;
   color: #160c28;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10px auto 10px;
   text-transform: none;
-  border: 3px solid transparent;
+  border: 3px solid #4fbdba;
 
   &:hover,
   &:focus,
   &:active {
     color: #160c28;
-    background: #efcb68;
-    border-color: unset;
+    background: #aefeff66;
   }
 
   &:hover {
-    border: 3px solid #160c28;
+    ${'' /* border: 3px solid #160c28; */}
   }
 `;
 
@@ -95,13 +90,14 @@ const SubHeading = styled.span`
 `;
 
 const LoginPage = () => {
-//   const userContext = useContext(UserContext);
-//   const { signInWithGoogle, signInWithGithub } = userContext;
+  //   const userContext = useContext(UserContext);
+  //   const { signInWithGoogle, signInWithGithub } = userContext;
+
   return (
     <Wrapper>
       <LoginWrapper>
         <div className="leftContainer">
-          <img className="logo" alt="logo" src="/assets/logoDarkTransparentHorizhontal.png" />
+          <img className="logo" alt="logo" src="/images/HomeIllus.svg" />
           <SubHeading>
             Meet, chat, call and collaborate in just one place.
           </SubHeading>
@@ -112,7 +108,7 @@ const LoginPage = () => {
               await signInWithGoogle();
             }}
           >
-            <FaGoogle size={40} />
+            <FaGoogle size={30} />
             &nbsp;&nbsp;Login with Google
           </StyledLoginButton>
         </div>
@@ -120,7 +116,7 @@ const LoginPage = () => {
           <img
             className="videoIllus"
             alt="video call illustration"
-            src="/assets/Illustrations/home.png"
+            src="/images/HomeIllus.svg"
           />
         </div>
       </LoginWrapper>
