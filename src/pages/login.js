@@ -3,9 +3,6 @@ import { FaGoogle } from 'react-icons/fa';
 import styled from 'styled-components';
 import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-
-const Videocall = dynamic(() => import('./agora/index.js'), { ssr: false });
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -103,6 +100,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user && !loading) router.replace('/home');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
 
   if (!user)
@@ -133,7 +131,6 @@ const LoginPage = () => {
             />
           </div>
         </LoginWrapper>
-        <Videocall />
       </Wrapper>
     );
   else return <></>;

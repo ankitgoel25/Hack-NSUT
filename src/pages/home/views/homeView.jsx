@@ -6,6 +6,7 @@ import { MdGroups } from "react-icons/md";
 import { useSnackbar } from "notistack";
 import { v4 as uuidv4 } from "uuid";
 import { UserContext } from "../../../context/UserContext";
+import { useRouter } from 'next/router';
 
 import {
   Heading,
@@ -21,8 +22,8 @@ import { doc, setDoc, updateDoc } from "firebase/firestore";
 const HomeView = () => {
   const { enqueueSnackbar } = useSnackbar();
   const userContext = useContext(UserContext);
-  const meetingContext = useContext(MeetingContext);
-  const { setMeetId } = meetingContext;
+  // const meetingContext = useContext(MeetingContext);
+  // const { setMeetId } = meetingContext;
   const { user } = userContext;
   const [newMeetName, setNewMeetName] = useState("");
   const [joinMeetId, setJoinMeetId] = useState("");
@@ -30,7 +31,7 @@ const HomeView = () => {
     create: false,
     join: false,
   });
-  const history = useHistory();
+  const history = useRouter();
 
   const joinMeeting = async (meetingId) => {
     // check if meeting exists and join the meeting

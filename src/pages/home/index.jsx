@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
-import styled from "styled-components";
-import { AiOutlineLogout } from "react-icons/ai";
-import { BsFillShareFill } from "react-icons/bs";
-import { StyledSubmitButton } from "./components";
-import { useSnackbar } from "notistack";
-import { Collapse, Button, Avatar } from "@mui/material";
-import { UserContext } from "../../context/UserContext";
-import HomeView from "./views/homeView";
+import { useState, useContext, useEffect } from 'react';
+import styled from 'styled-components';
+import { AiOutlineLogout } from 'react-icons/ai';
+import { BsFillShareFill } from 'react-icons/bs';
+import { StyledSubmitButton } from './components';
+import { useSnackbar } from 'notistack';
+import { Collapse, Button, Avatar } from '@mui/material';
+import { UserContext } from '../../context/UserContext';
+import HomeView from './views/homeView';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 const StyledSignoutButton = styled(Button)`
   height: 50px;
   border-radius: 40px;
-  font-family: "Sora", sans-serif;
+  font-family: 'Sora', sans-serif;
   background: #4fbdba;
   color: #072227;
   font-size: 20px;
@@ -98,7 +98,7 @@ const BottomContainer = styled.div`
       align-items: center;
 
       .title {
-        font-family: "Sora", sans-serif;
+        font-family: 'Sora', sans-serif;
         color: #072227;
         font-size: 22px;
         font-weight: 600;
@@ -106,7 +106,7 @@ const BottomContainer = styled.div`
       }
 
       p {
-        font-family: "Sora", sans-serif;
+        font-family: 'Sora', sans-serif;
         color: #072227;
         font-size: 17px;
         font-weight: 600;
@@ -186,7 +186,7 @@ const Home = () => {
   const { user, signOutUser } = useContext(UserContext);
   // const meetingContext = useContext(MeetingContext);
   // const { endMeeting } = meetingContext;
-  const [view, setView] = useState("home");
+  const [view, setView] = useState('home');
 
   // useEffect(() => {
   //   endMeeting();
@@ -197,7 +197,7 @@ const Home = () => {
       <Wrapper>
         <HomeWrapper>
           <TopNavBar>
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
               <StyledSignoutButton
                 type="default"
                 size="large"
@@ -214,7 +214,7 @@ const Home = () => {
                 src={
                   user.userImage
                     ? user.userImage
-                    : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
                 }
               />
             </div>
@@ -227,16 +227,16 @@ const Home = () => {
                 <p>{user.displayName}</p>
                 <p>{user.email}</p>
                 <StyledSubmitButton
-                  style={{ marginTop: "10px", width: "70%" }}
+                  style={{ marginTop: '10px', width: '70%' }}
                   onClick={() => {
                     navigator.clipboard.writeText(user.id).then(() => {
-                      enqueueSnackbar("User ID copied", {
+                      enqueueSnackbar('User ID copied', {
                         anchorOrigin: {
-                          vertical: "top",
-                          horizontal: "center",
+                          vertical: 'top',
+                          horizontal: 'center',
                         },
                         TransitionComponent: Collapse,
-                        variant: "success",
+                        variant: 'success',
                       });
                     });
                   }}

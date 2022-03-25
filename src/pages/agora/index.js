@@ -1,37 +1,51 @@
-import React, { CSSProperties, useState } from 'react';
-import AgoraUIKit, { layout } from 'agora-react-uikit';
+import { useState } from 'react';
 import 'agora-react-uikit/dist/index.css';
-import styles from './Agora.module.scss';
+import styles from '../../styles/Agora.module.scss';
+import dynamic from 'next/dynamic';
+
+const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
+  ssr: false,
+});
+const layout = dynamic(
+  () => import('agora-react-uikit').then((module) => module.layout),
+  {
+    ssr: false,
+  },
+);
 
 const Agora = () => {
-  const [videocall, setVideocall] = useState(true);
+  const [videocall, setVideocall] = useState(false);
   const [isHost, setHost] = useState(true);
   const [isPinned, setPinned] = useState(false);
   const [username, setUsername] = useState('');
 
   return (
-    <div style={styles.container}>
-      <div style={styles.videoContainer}>
-        <h1 style={styles.heading}>Agora React Web UI Kit</h1>
+    <div className={styles.container}>
+      <div className={styles.videoContainer}>
+        <h1 className={styles.heading}>Agora React Web UI Kit</h1>
         {videocall ? (
           <>
-            <div style={styles.nav}>
-              <p style={{ fontSize: 20, width: 200 }}>
-                You're {~isHost ? 'a host' : 'an audience'}
+            <div className={styles.nav}>
+              <p className={{ fontSize: 20, width: 200 }}>
+                You&apos;re {isHost ? 'a host' : 'an audience'}
               </p>
-              <p style={styles.btn} onClick={() => setHost(!isHost)}>
+              <p className={styles.btn} onClick={() => setHost(!isHost)}>
                 Change Role
               </p>
-              <p style={styles.btn} onClick={() => setPinned(!isPinned)}>
+              <p className={styles.btn} onClick={() => setPinned(!isPinned)}>
                 Change Layout
+              </p>
+              <p className={styles.btn} onClick={() => {}}>
+                Transcript
               </p>
             </div>
             <AgoraUIKit
               rtcProps={{
-                appId: '58def5ad48114fa6b4fcdc3dd08e8e6e',
+                appId: 'a10f9b8f0bf54750ad8f0c29bc3ef339',
                 channel: 'test',
-                layout: layout.grid,
-                //   layout: isPinned ? layout.pin : layout.grid
+                token:
+                  '006a10f9b8f0bf54750ad8f0c29bc3ef339IAAKxCq4+HeEz4jCPdJhI5kIt0HvvhpoCz9/Q+jRjSPb4Qx+f9gAAAAAEADR1hyr7R0/YgEAAQDtHT9i',
+                layout: isPinned ? layout.pin : layout.grid,
               }}
               rtmProps={{ username: username || 'user', displayUsername: true }}
               callbacks={{
@@ -40,9 +54,9 @@ const Agora = () => {
             />
           </>
         ) : (
-          <div style={styles.nav}>
+          <div className={styles.nav}>
             <input
-              style={styles.input}
+              className={styles.input}
               placeholder="nickname"
               type="text"
               value={username}
@@ -50,7 +64,7 @@ const Agora = () => {
                 setUsername(e.target.value);
               }}
             />
-            <h3 style={styles.btn} onClick={() => setVideocall(true)}>
+            <h3 className={styles.btn} onClick={() => setVideocall(true)}>
               Start Call
             </h3>
           </div>
