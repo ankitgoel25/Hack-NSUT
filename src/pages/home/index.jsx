@@ -4,10 +4,10 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { FaHome } from 'react-icons/fa';
 import { BsFillShareFill } from 'react-icons/bs';
 import { IoMdChatbubbles } from 'react-icons/io';
-import Logo from '../../assets/logoDarkTransparentHorizhontal.png';
 import { StyledSubmitButton } from './components';
 import { useSnackbar } from 'notistack';
 import { Collapse, Button, Avatar } from '@mui/material';
+import { UserContext } from '../../context/UserContext';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -17,15 +17,15 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #000411;
+  background-color: #072227;
 `;
 
 const StyledSignoutButton = styled(Button)`
   height: 50px;
   border-radius: 40px;
   font-family: 'Sora', sans-serif;
-  background: #efcb68;
-  color: #160c28;
+  background: #4fbdba;
+  color: #072227;
   font-size: 20px;
   font-weight: 600;
   display: flex;
@@ -38,13 +38,13 @@ const StyledSignoutButton = styled(Button)`
   &:hover,
   &:focus,
   &:active {
-    color: #160c28;
+    color: #072227;
     background: #efcb68;
     border-color: unset;
   }
 
   &:hover {
-    border: 2px solid #160c28;
+    border: 2px solid #072227;
   }
 `;
 
@@ -69,7 +69,7 @@ const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e1efe6;
+  background-color: white;
   position: relative;
 `;
 
@@ -79,14 +79,14 @@ const CurrentRoute = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Sora', sans-serif;
-  color: #160c28;
+  color: #072227;
   font-size: 25px;
   font-weight: 600;
   margin-right: 50px;
   cursor: pointer;
 
   ${(props) =>
-    props.current ? ` border-bottom : 4px solid #160c28; ` : ''}/* ${(props) =>
+    props.current ? ` border-bottom : 4px solid #072227; ` : ''}/* ${(props) =>
     props.disabled
       ? `
   pointer-events: none;
@@ -105,8 +105,9 @@ const BottomContainer = styled.div`
   .leftContainer {
     width: 24%;
     height: 100%;
-    border-right: 3px solid #160c28;
+    border-right: 3px solid #072227;
     padding: 20px 0;
+    text-align: center;
 
     .logo {
       width: 82%;
@@ -122,7 +123,7 @@ const BottomContainer = styled.div`
 
       .title {
         font-family: 'Sora', sans-serif;
-        color: #160c28;
+        color: #072227;
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 15px;
@@ -130,7 +131,7 @@ const BottomContainer = styled.div`
 
       p {
         font-family: 'Sora', sans-serif;
-        color: #160c28;
+        color: #072227;
         font-size: 17px;
         font-weight: 600;
         margin-bottom: 10px;
@@ -206,97 +207,98 @@ const BottomContainer = styled.div`
 
 const Home = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const userContext = useContext(UserContext);
-  const meetingContext = useContext(MeetingContext);
-  const { endMeeting } = meetingContext;
-  const { user, signOutUser } = userContext;
+  const { user, signOutUser } = useContext(UserContext);
+  // const meetingContext = useContext(MeetingContext);
+  // const { endMeeting } = meetingContext;
   const [view, setView] = useState('home');
 
-  useEffect(() => {
-    endMeeting();
-  }, []);
+  // useEffect(() => {
+  //   endMeeting();
+  // }, []);
 
-  return (
-    <Wrapper>
-      <HomeWrapper>
-        <TopNavBar>
-          <div style={{ display: 'flex' }}>
-            <CurrentRoute
-              current={view === 'home'}
-              onClick={() => {
-                setView('home');
-              }}
-            >
-              <FaHome size={30} />
-              &nbsp;Home
-            </CurrentRoute>
-            <CurrentRoute
-              disabled
-              current={view === 'messages'}
-              onClick={() => {
-                setView('messages');
-              }}
-            >
-              <IoMdChatbubbles size={30} />
-              &nbsp;Messages
-            </CurrentRoute>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <StyledSignoutButton
-              type="default"
-              size="large"
-              onClick={async () => {
-                await signOutUser();
-              }}
-            >
-              <AiOutlineLogout size={30} />
-              &nbsp;&nbsp;SignOut
-            </StyledSignoutButton>
-            <Avatar
-              size={55}
-              sx={{ width: 55, height: 55 }}
-              src={
-                user.userImage
-                  ? user.userImage
-                  : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
-              }
-            />
-          </div>
-        </TopNavBar>
-        <BottomContainer>
-          <div className="leftContainer">
-            <img className="logo" alt="logo" src={Logo} />
-            <div className="userDetails">
-              <span className="title">User Details</span>
-              <p>{user.displayName}</p>
-              <p>{user.email}</p>
-              <StyledSubmitButton
-                style={{ marginTop: '10px', width: '70%' }}
+  if (user)
+    return (
+      <Wrapper>
+        <HomeWrapper>
+          <TopNavBar>
+            <div style={{ display: 'flex' }}>
+              <CurrentRoute
+                current={view === 'home'}
                 onClick={() => {
-                  navigator.clipboard.writeText(user.id).then(() => {
-                    enqueueSnackbar('User ID copied', {
-                      anchorOrigin: {
-                        vertical: 'top',
-                        horizontal: 'center',
-                      },
-                      TransitionComponent: Collapse,
-                      variant: 'success',
-                    });
-                  });
+                  setView('home');
                 }}
               >
-                Share ID&nbsp;&nbsp;
-                <BsFillShareFill size={20} />
-              </StyledSubmitButton>
+                <FaHome size={30} />
+                &nbsp;Home
+              </CurrentRoute>
+              <CurrentRoute
+                disabled
+                current={view === 'messages'}
+                onClick={() => {
+                  setView('messages');
+                }}
+              >
+                <IoMdChatbubbles size={30} />
+                &nbsp;Messages
+              </CurrentRoute>
             </div>
-          </div>
-          {/* <div className="rightContainer">
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <StyledSignoutButton
+                type="default"
+                size="large"
+                onClick={async () => {
+                  await signOutUser();
+                }}
+              >
+                <AiOutlineLogout size={30} />
+                &nbsp;&nbsp;SignOut
+              </StyledSignoutButton>
+              <Avatar
+                size={55}
+                sx={{ width: 55, height: 55 }}
+                src={
+                  user.userImage
+                    ? user.userImage
+                    : 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+                }
+              />
+            </div>
+          </TopNavBar>
+          <BottomContainer>
+            <div className="leftContainer">
+              <img className="logo" alt="logo" src="/images/Logo.png" />
+              <div className="userDetails">
+                <span className="title">User Details</span>
+                <p>{user.displayName}</p>
+                <p>{user.email}</p>
+                <StyledSubmitButton
+                  style={{ marginTop: '10px', width: '70%' }}
+                  onClick={() => {
+                    navigator.clipboard.writeText(user.id).then(() => {
+                      enqueueSnackbar('User ID copied', {
+                        anchorOrigin: {
+                          vertical: 'top',
+                          horizontal: 'center',
+                        },
+                        TransitionComponent: Collapse,
+                        variant: 'success',
+                      });
+                    });
+                  }}
+                >
+                  Share ID&nbsp;&nbsp;
+                  <BsFillShareFill size={20} />
+                </StyledSubmitButton>
+              </div>
+            </div>
+            {/* <div className="rightContainer">
             {view === 'home' ? <HomeView /> : <MessageView />}
           </div> */}
-        </BottomContainer>
-      </HomeWrapper>
-    </Wrapper>
-  );
+          </BottomContainer>
+        </HomeWrapper>
+      </Wrapper>
+    );
+  else return <></>;
 };
 
 export default Home;
