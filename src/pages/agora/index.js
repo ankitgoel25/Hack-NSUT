@@ -26,7 +26,6 @@ const Agora = () => {
             rtcProps={{
               appId: 'a10f9b8f0bf54750ad8f0c29bc3ef339',
               channel: 'test',
-              // layout: layout.grid,
                 layout: isPinned ? layout.pin : layout.grid,
                 token: '006a10f9b8f0bf54750ad8f0c29bc3ef339IAAKxCq4+HeEz4jCPdJhI5kIt0HvvhpoCz9/Q+jRjSPb4Qx+f9gAAAAAEADR1hyr7R0/YgEAAQDtHT9i'
 
