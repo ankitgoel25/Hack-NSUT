@@ -44,6 +44,29 @@ export const StyledInput = styled.input`
   }
 `;
 
+export const JoinButton = styled.button`
+  width: 100%;
+  font-size: 17px;
+  outline: none;
+  border-color: red;
+  border-radius: 10px;
+  background: #aefeff35;
+  font-family: 'Sora', sans-serif;
+  margin-bottom: 15px;
+  border: 2px solid transparent;
+  padding: 8px 10px;
+  border: 2px solid #160c2811;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #160c28;
+    background: #aefeff35;
+    border: 2px solid #160c28;
+    box-shadow: none;
+  }
+`;
+
 export const StyledSubmitButton = styled.button`
   height: 48px;
   border-radius: 20px;

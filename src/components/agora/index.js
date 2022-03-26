@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import 'agora-react-uikit/dist/index.css';
 import styles from '../../styles/Agora.module.scss';
 import dynamic from 'next/dynamic';
+import { UserContext } from '../../context/UserContext';
 
 const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
   ssr: false,
@@ -13,16 +14,16 @@ const layout = dynamic(
   },
 );
 
-const Agora = () => {
+const Agora = (props) => {
+  const { user } = useContext(UserContext);
   const [videocall, setVideocall] = useState(false);
   const [isHost, setHost] = useState(true);
   const [isPinned, setPinned] = useState(false);
-  const [username, setUsername] = useState('');
 
   return (
     <div className={styles.container}>
       <div className={styles.videoContainer}>
-        <h1 className={styles.heading}>Agora React Web UI Kit</h1>
+        <h1 className={styles.heading}>Meet Buddy</h1>
         {videocall ? (
           <>
             <div className={styles.nav}>
@@ -42,12 +43,11 @@ const Agora = () => {
             <AgoraUIKit
               rtcProps={{
                 appId: 'a10f9b8f0bf54750ad8f0c29bc3ef339',
-                channel: 'test',
-                token:
-                  '006a10f9b8f0bf54750ad8f0c29bc3ef339IAAKxCq4+HeEz4jCPdJhI5kIt0HvvhpoCz9/Q+jRjSPb4Qx+f9gAAAAAEADR1hyr7R0/YgEAAQDtHT9i',
+                channel: props.channel,
+                token: props.token,
                 layout: isPinned ? layout.pin : layout.grid,
               }}
-              rtmProps={{ username: username || 'user', displayUsername: true }}
+              rtmProps={{ username: user.displayName, displayUsername: true }}
               callbacks={{
                 EndCall: () => setVideocall(false),
               }}
@@ -55,7 +55,7 @@ const Agora = () => {
           </>
         ) : (
           <div className={styles.nav}>
-            <input
+            {/* <input
               className={styles.input}
               placeholder="nickname"
               type="text"
@@ -63,7 +63,7 @@ const Agora = () => {
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
-            />
+            /> */}
             <h3 className={styles.btn} onClick={() => setVideocall(true)}>
               Start Call
             </h3>

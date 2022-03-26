@@ -127,6 +127,7 @@ const BottomContainer = styled.div`
 
     .homeView {
       padding: 30px;
+      height: 100%;
       flex-grow: 1;
       display: grid;
       grid-template-columns: 48.5% 48.5%;
@@ -141,7 +142,7 @@ const BottomContainer = styled.div`
       justify-content: space-between;
 
       .option {
-        height: 47%;
+        height: 100%;
         width: 100%;
         border-radius: 20px;
         ${'' /* background-color: #e4e4e440; */}
@@ -152,6 +153,7 @@ const BottomContainer = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        overflow-y: auto;
 
         .content {
           display: flex;

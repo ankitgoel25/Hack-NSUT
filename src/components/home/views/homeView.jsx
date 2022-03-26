@@ -11,13 +11,16 @@ import {
   Heading,
   SubHeading,
   StyledInput,
+  JoinButton,
   StyledSubmitButton,
   RecentMeetings,
 } from '../components';
 import { db } from '../../../firebase';
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { channels } from '../../../utils/channels';
 
 const HomeView = () => {
+  const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
   const { user } = useContext(UserContext);
   // const meetingContext = useContext(MeetingContext);
@@ -101,7 +104,7 @@ const HomeView = () => {
   return (
     <>
       <div className="left">
-        <div className="option">
+        {/* <div className="option">
           <Heading>
             <BsCameraVideo size={40} />
             &nbsp;&nbsp;Create Meeting
@@ -127,7 +130,7 @@ const HomeView = () => {
               <BsArrowRightShort size={30} />
             </StyledSubmitButton>
           </div>
-        </div>
+        </div> */}
         <div className="option">
           <Heading>
             <MdGroups size={40} />
@@ -135,14 +138,22 @@ const HomeView = () => {
           </Heading>
           <div className="content">
             <SubHeading>Join meeting by meet ID</SubHeading>
-            <StyledInput
+            {/* <StyledInput
               value={joinMeetId}
               onChange={(e) => {
                 setJoinMeetId(e.target.value);
               }}
               placeholder="Meeting ID (Required)"
-            />
-            <StyledSubmitButton
+            /> */}
+            {channels.map((ch) => (
+              <JoinButton
+                key={ch.id}
+                onClick={() => router.push(`/meet/${ch.id}`)}
+              >
+                {ch.channel}
+              </JoinButton>
+            ))}
+            {/* <StyledSubmitButton
               loading={localLoading.join}
               onClick={() => {
                 joinMeeting(joinMeetId);
@@ -153,7 +164,7 @@ const HomeView = () => {
             >
               Join
               <BsArrowRightShort size={30} />
-            </StyledSubmitButton>
+            </StyledSubmitButton> */}
           </div>
         </div>
       </div>
