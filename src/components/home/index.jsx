@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #072227;
+  background-color: #4fbdba;
 `;
 
 const StyledSignoutButton = styled(Button)`
@@ -154,6 +154,21 @@ const BottomContainer = styled.div`
         justify-content: flex-start;
         align-items: center;
         overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+          background: #fff;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px #e4e4e4;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: #4fbdba;
+        }
 
         .content {
           display: flex;
