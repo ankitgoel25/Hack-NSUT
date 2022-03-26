@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Instructions</h1>
+We have submitted a repository link and the website link. You just have to either simply click on the website link that we have provided or clone the repository and run npm i followed by npm run dev in the terminal and you will land on MeetBuddy. 
+<br></br>
+<h1>Overview</h1>
+MeetBuddy is an application that is providing you with lag-free, jitter-free online meetings. You won't be missing any part of the meeting even if you have joined the meeting a bit late because the entire meeting will be transcripted.
+<br></br>
+<h1>Inspiration</h1>
+Has it ever happened that you went to attend a meeting but you are a bit late and you realize that the part you missed was the most important part of the meeting? At that moment you regret a lot. The inspiration for building this app comes from these moments only. Sometimes it happens that you are not able to attend meetings/classes on time due to any personal/emergency/circumstantial situation. At such times you just want someone to give you a brief description of what happened.
+<br></br>
+<h1>What It Does?</h1>
+Our motto behind this app is to make online meetings more contextual and reliable. What it does is allows you to gain the information that you thought you may have lost the chance to gain.
+The user has to sign up through google. Then the user can create/join a room and invite others to that particular room. If you due to some reason join the meeting a bit late, you don't have to worry at all because the meeting would be transcripted and you will not miss anything from that meeting.
+<br></br>
+<h1>How We Built It?</h1>
+First of all, we planned out the idea, its detailed features and made a flowchart to prevent any kind of technical errors in the end. We did all of this on a sheet of paper listing the logic flows and how to make the system more optimized. At last, we came up with an implementation plan.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:4300](http://localhost:4300) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:4300/api/hello](http://localhost:4300/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+All four of us having experience in frontend (HTML, CSS, JavaScript, ReactJs/NextJs) and backend(Firebase), we decided to assign equal amounts of frontend and backend work to each member.
+<br></br>
+<h1>Accomplishments That We Are Proud Of</h1>
+Accomplishments we're proud of are successfully implementing the logic flow we had decided at the beginning of the hackathon and that too is upto our expectations. We're also proud of the web application that we were able to build with libraries which we had never heard of during the hackathon itself as we learned a lot while implementing them.
+<br></br>
+<h1>What We Learned?</h1>
+As already mentioned above, we learned a lot while implementing some libraries we have never used before. We majorly learned how to collaborate and manage time in these kinds of hackathons.
+<br></br>
+<h1>Built With</h1>
+<li>HTML
+<li>CSS
+<li>SASS
+<li>ReactJs
+<li>NextJs
+<li>Firebase
+<li>Agora
+<li>Symbl.ai
+<br></br>
+<h1>ScreenShots</h1>
