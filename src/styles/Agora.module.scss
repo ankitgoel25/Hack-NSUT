@@ -3,36 +3,81 @@
   height: 100vh;
   display: flex;
   flex: 1;
-  background-color: #007bff22;
+  background-color: #c2dfff66;
 }
 
 .heading {
   text-align: center;
-  margin-bottom: 0px;
+  font-size: 38px;
+  color: hsl(194, 34%, 23%);
+  font-weight: bold;
+}
+
+.role {
+  font-size: 20px;
+  width: 200px;
+  padding: 8px 15px;
+  border: 1px solid #072227;
+  border-radius: 8px;
 }
 
 .videoContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  align-items: center;
 }
 
 .nav {
+  width: 90%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #007bff;
   cursor: pointer;
   border-radius: 8px;
-  padding: 4px 8px;
+  padding: 8px 15px;
   color: #ffffff;
   font-size: 20px;
+  margin: 0 20px;
+
+  &:hover {
+  }
 }
+
+// .btn:hover {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 15px;
+//   background-color: #072227;
+//   cursor: pointer;
+//   border: none;
+//   border-radius: 18px;
+//   color: #ffffff;
+//   font-size: 20px;
+// }
 
 .input {
   display: flex;
   height: 24px;
   align-self: center;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #072227;
+}
+
+.agoraContainer {
+  width: 80%;
+  height: 70vh;
+
+  & > div {
+    min-height: 100% !important;
+  }
 }

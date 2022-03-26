@@ -8,12 +8,12 @@ const MeetRoom = () => {
   const router = useRouter();
   const { roomId } = router.query;
 
-  useEffect(() => {
-    if (!roomId) {
-      router.push('/');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [roomId]);
+  //   useEffect(() => {
+  //     if (!roomId) {
+  //       router.push('/');
+  //     }
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   }, [roomId]);
 
   if (roomId) {
     return (
