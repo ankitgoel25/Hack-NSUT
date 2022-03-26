@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #4fbdba;
+  background-color: #35858b;
 `;
 
 const StyledSignoutButton = styled(Button)`
