@@ -104,33 +104,6 @@ const HomeView = () => {
   return (
     <>
       <div className="left">
-        {/* <div className="option">
-          <Heading>
-            <BsCameraVideo size={40} />
-            &nbsp;&nbsp;Create Meeting
-          </Heading>
-          <div className="content">
-            <SubHeading>Create your own Meeting</SubHeading>
-            <StyledInput
-              value={newMeetName}
-              onChange={(e) => {
-                setNewMeetName(e.target.value);
-              }}
-              placeholder="Meeting Name (Optional)"
-            />
-            <StyledSubmitButton
-              loading={localLoading.create}
-              onClick={() => {
-                createMeeting();
-              }}
-              type="default"
-              size="large"
-            >
-              Create
-              <BsArrowRightShort size={30} />
-            </StyledSubmitButton>
-          </div>
-        </div> */}
         <div className="option">
           <Heading>
             <MdGroups size={40} />
@@ -150,7 +123,7 @@ const HomeView = () => {
                 key={ch.id}
                 onClick={() => router.push(`/meet/${ch.id}`)}
               >
-                {ch.channel}
+                {ch.name} {ch.id + 1}
               </JoinButton>
             ))}
             {/* <StyledSubmitButton

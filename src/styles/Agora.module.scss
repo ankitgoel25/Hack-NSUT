@@ -14,8 +14,8 @@
 }
 
 .role {
-  font-size: 20px;
-  width: 200px;
+  font-size: 18px;
+  width: 240px;
   padding: 8px 15px;
   border: 1px solid #072227;
   border-radius: 8px;
@@ -48,21 +48,9 @@
   margin: 0 20px;
 
   &:hover {
+    background-color: #007bffcc;
   }
 }
-
-// .btn:hover {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 15px;
-//   background-color: #072227;
-//   cursor: pointer;
-//   border: none;
-//   border-radius: 18px;
-//   color: #ffffff;
-//   font-size: 20px;
-// }
 
 .input {
   display: flex;

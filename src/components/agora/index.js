@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import 'agora-react-uikit/dist/index.css';
+import { useRouter } from 'next/router';
 import styles from '../../styles/Agora.module.scss';
 import dynamic from 'next/dynamic';
 import { UserContext } from '../../context/UserContext';
@@ -10,12 +11,13 @@ const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
 });
 const layout = dynamic(
   () => import('agora-react-uikit').then((module) => module.layout),
-  {
-    ssr: false,
-  },
+  { ssr: false },
 );
 
+console.log(layout);
+
 const Agora = (props) => {
+  const router = useRouter();
   const { user } = useContext(UserContext);
   const [videocall, setVideocall] = useState(false);
   const [isHost, setHost] = useState(true);
@@ -35,10 +37,7 @@ const Agora = (props) => {
                 <p className={styles.btn} onClick={() => setHost(!isHost)}>
                   Change Role
                 </p>
-                <p
-                  className={styles.btn}
-                  onClick={() => setPinned((prev) => !prev)}
-                >
+                <p className={styles.btn} onClick={() => setPinned(!isPinned)}>
                   Change Layout
                 </p>
                 <p className={styles.btn} onClick={() => {}}>
@@ -58,7 +57,10 @@ const Agora = (props) => {
                     displayUsername: true,
                   }}
                   callbacks={{
-                    EndCall: () => setVideocall(false),
+                    EndCall: () => {
+                      setVideocall(false);
+                      router.push('/');
+                    },
                   }}
                 />
               </div>
